@@ -11,10 +11,11 @@ import Missing from "./components/Missing";
 import Footer from "./components/Footer";
 
 function App() {
+  const [search, setSearch] = useState("");
   return (
     <>
-      <Header />
-      <Nav />
+      <Header title="React Blog Post" />
+      <Nav search={search} setSearch={setSearch} />
       <Routes>
         <Route path="/new-post" element={<NewPost />} />
         <Route path="/post/:id" element={<PostPage />} />
