@@ -1,11 +1,6 @@
 import React from "react";
 import Header from "./components/Header";
-import {
-  Route,
-  BrowserRouter as Router,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
@@ -17,18 +12,32 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Router>
+    <>
       <Header />
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/new-post" element={<NewPost />} />
-        <Route path="/posts" element={<PostPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/missing" element={<Missing />} />
+        <Route path="/">
+          <Home />
+        </Route>
+
+        <Route path="/new-post">
+          <NewPost />
+        </Route>
+
+        <Route path="/post/id">
+          <PostPage />
+        </Route>
+
+        <Route path="/about">
+          <About />
+        </Route>
+
+        <Route path="/*">
+          <Missing />
+        </Route>
       </Routes>
       <Footer />
-    </Router>
+    </>
   );
 }
 
