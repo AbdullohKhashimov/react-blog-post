@@ -1,7 +1,35 @@
 import React from "react";
+import Header from "./components/Header";
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
+import { useState, useEffect } from "react";
+import Nav from "./components/Nav";
+import Home from "./components/Home";
+import PostPage from "./components/PostPage";
+import NewPost from "./components/NewPost";
+import About from "./components/About";
+import Missing from "./components/Missing";
+import Footer from "./components/Footer";
 
 function App() {
-  return <div className="App">App</div>;
+  return (
+    <Router>
+      <Header />
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/new-post" element={<NewPost />} />
+        <Route path="/posts" element={<PostPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/missing" element={<Missing />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
 }
 
 export default App;
