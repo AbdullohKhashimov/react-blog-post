@@ -16,25 +16,11 @@ function App() {
       <Header />
       <Nav />
       <Routes>
-        <Route path="/">
-          <Home />
-        </Route>
-
-        <Route path="/new-post">
-          <NewPost />
-        </Route>
-
-        <Route path="/post/id">
-          <PostPage />
-        </Route>
-
-        <Route path="/about">
-          <About />
-        </Route>
-
-        <Route path="/*">
-          <Missing />
-        </Route>
+        <Route path="/new-post" element={<NewPost />} />
+        <Route path="/post/:id" element={<PostPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<Missing />} />
+        <Route path="/" element={<Home />} />
       </Routes>
       <Footer />
     </>
