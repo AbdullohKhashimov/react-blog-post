@@ -1,0 +1,29 @@
+.post-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 2%;
+}
+
+.post-container .post-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.post-container .post-article .post-link {
+  text-decoration: none;
+  color: rgb(65, 173, 188);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.post-container .post-article .post-link:hover {
+  color: black;
+  text-decoration: underline;
+  transition: 0.3s ease-in;
+}

@@ -1,10 +1,21 @@
 import React from "react";
 import "../styles/home.css";
+import Feed from "./Feed";
 
-const Home = () => {
+interface HomeProps {
+  posts: any | "" | [];
+  setPosts: any | "" | [];
+}
+
+const Home = (props: HomeProps) => {
+  const { posts, setPosts } = props;
   return (
-    <div>
-      <h1> Home</h1>
+    <div className="home-container">
+      {posts.length ? (
+        <Feed posts={posts} />
+      ) : (
+        <p className="home-paragraph">No posts to display</p>
+      )}
     </div>
   );
 };
