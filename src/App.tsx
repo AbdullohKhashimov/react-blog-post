@@ -11,6 +11,32 @@ import Missing from "./components/Missing";
 import Footer from "./components/Footer";
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      title: "My first Post",
+      datetime: "July 01, 2024, 11:20:35 AM",
+      body: "I have just fallen in love with the song",
+    },
+    {
+      id: 2,
+      title: "My second Post",
+      datetime: "June 02, 2024, 06:21:35 AM",
+      body: "I started going to the gym",
+    },
+    {
+      id: 3,
+      title: "My third Post",
+      datetime: "May 25, 2024, 4:20:20 PM",
+      body: "React has become my one and only",
+    },
+    {
+      id: 4,
+      title: "My fourth Post",
+      datetime: "August, 11, 2024, 9:20:35 PM",
+      body: "I found my love",
+    },
+  ]);
   const [search, setSearch] = useState("");
   return (
     <>

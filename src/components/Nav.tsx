@@ -13,9 +13,7 @@ const Nav = (props: NavProps) => {
     <div className="nav-container">
       <nav className="nav-search">
         <form className="nav-form" onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor="search" className="nav-title">
-            Search Posts
-          </label>
+          <label htmlFor="search" className="nav-title"></label>
           <input
             className="nav-input"
             id="search"
@@ -26,16 +24,22 @@ const Nav = (props: NavProps) => {
           />
         </form>
         <ul className="nav-ul">
-          <li>
-            <Link to="/">Home</Link>
+          <li className="nav-li">
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
           </li>
 
-          <li>
-            <Link to="/post/:id">Post</Link>
+          <li className="nav-li">
+            <Link className="nav-link" to="/post/:id">
+              Post
+            </Link>
           </li>
 
-          <li>
-            <Link to="/about">About</Link>
+          <li className="nav-li">
+            <Link className="nav-link" to="/about">
+              About
+            </Link>
           </li>
         </ul>
       </nav>
