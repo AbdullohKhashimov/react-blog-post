@@ -9,6 +9,14 @@ import NewPost from "./components/NewPost";
 import About from "./components/About";
 import Missing from "./components/Missing";
 import Footer from "./components/Footer";
+import { format } from "date-fns";
+
+interface Post {
+  id: number;
+  title: string;
+  datetime: string;
+  body: string;
+}
 
 function App() {
   const [posts, setPosts] = useState([
@@ -37,17 +45,37 @@ function App() {
       body: "I found my love",
     },
   ]);
-  const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [search, setSearch] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<Post[]>([]);
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const filteredResults = posts.filter(
+      (item) =>
+        item.body.toLowerCase().includes(search.toLowerCase()) ||
+        item.title.toLowerCase().includes(search.toLowerCase())
+    );
+
+    setSearchResults(filteredResults.reverse());
+  }, [posts, search]);
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     // defining id for the post
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1; // referencing the last post
+    const datetime = format(new Date(), "MMMM dd, yyyy pp");
+
+    // creating a new post
+    const newPost = { id, title: postTitle, datetime, body: postBody };
+    const allPosts = [...posts, newPost];
+
+    setPosts(allPosts);
+    setPostTitle("");
+    setPostBody("");
+    navigate("/");
   };
 
   const handleDelete = (id: any) => {
@@ -78,7 +106,7 @@ function App() {
         />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Missing />} />
-        <Route path="/" element={<Home posts={posts} setPosts={setPosts} />} />
+        <Route path="/" element={<Home posts={searchResults} />} />
       </Routes>
       <Footer />
     </>

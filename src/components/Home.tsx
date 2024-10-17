@@ -4,11 +4,10 @@ import Feed from "./Feed";
 
 interface HomeProps {
   posts: any | "" | [];
-  setPosts: any | "" | [];
 }
 
 const Home = (props: HomeProps) => {
-  const { posts, setPosts } = props;
+  const { posts } = props;
   return (
     <div className="home-container">
       {posts.length ? (
@@ -19,5 +18,4 @@ const Home = (props: HomeProps) => {
     </div>
   );
 };
-
 export default Home;
